@@ -1,0 +1,56 @@
+version: "3.9"
+# Defines a bridge network named "alten-network" that will be used to connect the containers.
+networks:
+  alten-network:
+    driver: bridge
+
+services:
+
+  postgres-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: booking
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: alten
+    #    Uncomment this line if you want to persist the data when the container shuts down.
+    #    volumes:
+    #      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - alten-network
+    ports:
+      - 5432:5432
+
+  booking-app:
+    build: ./booking-app
+    depends_on:
+      - postgres-db
+    # Sets environment variables for the database host, name, username, password, and the location of the Flyway migration scripts.
+    environment:
+      - db_host=postgres-db
+      - db_name=booking
+      - db_username=postgres
+      - db_password=alten
+      - flyway_locations=classpath:db/migration
+    deploy:
+      # Deploys three replicas of the service to ensure high availability.
+      replicas: 3
+    networks:
+      - alten-network
+
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - booking-app
+    # Mounts a volume that maps the "nginx.conf" file located in the "./booking-app" directory to the container's "/etc/nginx/conf.d/default.conf" file.
+    volumes:
+      - ./booking-app/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - alten-network
+# Uncomment this line if you want to persist the data when the container shuts down.
+#volumes:
+#  postgres-data:

@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${db_host}/${db_name}
+    username: ${db_username}
+    password: ${db_password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    locations:
+      - ${flyway_locations}
+  sql:
+    init:
+      mode: always
+      platform: postgres
+  mvc:
+    format:
+      date: yyyy-MM-dd
+
+reservation:
+  max-stay-days: 3
+  max-advance-booking-days: 30

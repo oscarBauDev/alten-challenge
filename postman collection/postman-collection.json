@@ -1,0 +1,175 @@
+{
+  "collection": {
+    "info": {
+      "_postman_id": "e3147b67-2f9a-4837-a0b5-9ae60e7b9697",
+      "name": "Alten",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "updatedAt": "2023-04-10T14:08:09.000Z",
+      "uid": "7605695-e3147b67-2f9a-4837-a0b5-9ae60e7b9697"
+    },
+    "item": [
+      {
+        "name": "Make a reservation",
+        "id": "a63d58c5-98ef-419b-bb38-9893adb94e7b",
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        },
+        "request": {
+          "method": "POST",
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"guestName\": \"New Alten guest\",\r\n    \"checkInDate\": \"2023-04-24\",\r\n    \"checkOutDate\": \"2023-04-26\"\r\n}\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "url": {
+            "raw": "localhost:80/api/v1/bookings/add",
+            "host": [
+              "localhost"
+            ],
+            "port": "80",
+            "path": [
+              "api",
+              "v1",
+              "bookings",
+              "add"
+            ]
+          }
+        },
+        "response": [],
+        "uid": "7605695-a63d58c5-98ef-419b-bb38-9893adb94e7b"
+      },
+      {
+        "name": "Get all reservations",
+        "id": "c3b10de7-11f6-4159-856f-03a9593c3635",
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        },
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "localhost:80/api/v1/bookings",
+            "host": [
+              "localhost"
+            ],
+            "port": "80",
+            "path": [
+              "api",
+              "v1",
+              "bookings"
+            ]
+          }
+        },
+        "response": [],
+        "uid": "7605695-c3b10de7-11f6-4159-856f-03a9593c3635"
+      },
+      {
+        "name": "Check availability",
+        "id": "5b89cee7-81e5-4526-8ec5-5d72b8557016",
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        },
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "localhost:80/api/v1/bookings/availability?checkIn=2023-04-28&checkOut=2023-04-30",
+            "host": [
+              "localhost"
+            ],
+            "port": "80",
+            "path": [
+              "api",
+              "v1",
+              "bookings",
+              "availability"
+            ],
+            "query": [
+              {
+                "key": "checkIn",
+                "value": "2023-04-28"
+              },
+              {
+                "key": "checkOut",
+                "value": "2023-04-30"
+              }
+            ]
+          }
+        },
+        "response": [],
+        "uid": "7605695-5b89cee7-81e5-4526-8ec5-5d72b8557016"
+      },
+      {
+        "name": "Cancel reservation",
+        "id": "4602fee6-d7f8-486a-a281-4453c65ac79b",
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        },
+        "request": {
+          "auth": {
+            "type": "noauth"
+          },
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "localhost:80/api/v1/bookings/cancel/1",
+            "host": [
+              "localhost"
+            ],
+            "port": "80",
+            "path": [
+              "api",
+              "v1",
+              "bookings",
+              "cancel",
+              "1"
+            ]
+          }
+        },
+        "response": [],
+        "uid": "7605695-4602fee6-d7f8-486a-a281-4453c65ac79b"
+      },
+      {
+        "name": "Modify reservation",
+        "id": "797a5098-2938-445f-b577-860a95f05d26",
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        },
+        "request": {
+          "method": "PUT",
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"guestName\": \"Arthur Rimbaud\",\r\n    \"checkInDate\": \"2023-04-27\",\r\n    \"checkOutDate\": \"2023-04-29\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "url": {
+            "raw": "localhost:80/api/v1/bookings/modify/2",
+            "host": [
+              "localhost"
+            ],
+            "port": "80",
+            "path": [
+              "api",
+              "v1",
+              "bookings",
+              "modify",
+              "2"
+            ]
+          }
+        },
+        "response": [],
+        "uid": "7605695-797a5098-2938-445f-b577-860a95f05d26"
+      }
+    ]
+  }
+}
