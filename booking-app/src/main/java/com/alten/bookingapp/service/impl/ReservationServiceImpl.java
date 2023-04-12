@@ -115,7 +115,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ModifyResponseDto cancelReservation(Long id) {
         LocalDateTime modifiedAt = LocalDateTime.now();
-        Reservation reservationInDb = reservationRepository.findById(id).orElseThrow(() -> new RoomNotAvailableException("Room with id " + id + " not found."));
+        Reservation reservationInDb = reservationRepository.findById(id).orElseThrow(() -> new RoomNotAvailableException("Reservation with id " + id + " not found."));
         if (reservationInDb.getCancelled()) {
             throw new ReservationAlreadyCancelledException("Reservation with id " + id + " was already cancelled");
         }
