@@ -197,7 +197,7 @@ class ReservationControllerTest {
         ReservationDTO reservationDto = ReservationDTO.builder()
                 .build();
 
-        when(service.placeReservation(reservationDto)).thenThrow(new RoomNotAvailableException("The room is already booked for this dates"));
+        when(service.placeReservation(reservationDto)).thenThrow(new RuntimeException());
 
         mockMvc.perform(post("/api/v1/bookings/add")
                         .contentType(MediaType.APPLICATION_JSON)
