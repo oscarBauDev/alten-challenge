@@ -41,7 +41,6 @@ docker-compose -p alten-project down
 - **'GET localhost:80/api/v1/bookings'**:  Retrieves a list of all current bookings
 - **'POST localhost:80/api/v1/bookings/add'**: Creates a new booking with the given guest name, check-in date, and check-out
   date. Example body:
--
 
 ```json
 {
